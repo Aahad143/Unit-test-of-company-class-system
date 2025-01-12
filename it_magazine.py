@@ -6,13 +6,13 @@ class ITMagazineStaff:
     _used_staff_ids = set()  # Class-level registry to keep track of all staff IDs
 
     def __init__(self, staff_id: int, salary: int, dept: str):
-        # OCL: staff_id must be a 6-digit integer
+
         if not isinstance(staff_id, int) or len(str(staff_id)) != 6:
             raise ValueError("Staff ID must be a 6-digit integer.")
-        # OCL: salary must be between 10,000 and 1,000,000
+        
         if not (10000 <= salary <= 1000000):
             raise ValueError("Salary must be between 10,000 and 1,000,000.")
-        # OCL: dept must be one of the defined departments
+
         valid_departments = ["Marketing", "Editing", "Processing Centre"]
         if dept not in valid_departments:
             raise ValueError(f"Department must be one of {valid_departments}.")
@@ -262,12 +262,12 @@ class RemoveAdvertFromIssueCommand(Command):
 # ProcessingCentreStaff Commands
 
 class StoreAdvertCommand(Command):
-    def __init__(self, processing_centre, advert):
-        self.processing_centre = processing_centre
+    def __init__(self, processing_centre_staff, advert):
+        self.processing_centre_staff = processing_centre_staff
         self.advert = advert
 
     def execute(self):
-        self.processing_centre.store_advert(self.advert)
+        self.processing_centre_staff.store_advert(self.advert)
         return f"Advert {self.advert.advert_id} stored successfully."
 
 
