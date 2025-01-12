@@ -70,7 +70,7 @@ class ITMagazineStaff:
             # print(f"{self.__class__.__name__} (ID: {self.staff_id}) has been deleted.")
         except AttributeError:
             # In case the attribute is not available at the time of deletion
-            print(f"{self.__class__.__name__} object is already partially destroyed.")
+            pass
 
 
 class MarketingDeptStaff(ITMagazineStaff):
